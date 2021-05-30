@@ -6,7 +6,8 @@ stages{
             withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'password', usernameVariable: 'username')]) {
     // some block
 
-            sh 'docker login -u $username -p $password'
+            remote.username = username
+            remote.password = password
             }
         }
         
