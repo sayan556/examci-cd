@@ -3,7 +3,11 @@ agent any
 stages{
     stage('Docker login'){
         steps{
-            sh 'docker login -u sayan556 -p Sayanm15@'
+            withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'password', usernameVariable: 'username')]) {
+    // some block
+
+            sh 'docker login -u $username -p $password'
+            }
         }
         
     }
